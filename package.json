@@ -1,0 +1,24 @@
+{
+  "name": "news-app-1",
+  "version": "1.0.0",
+  "description": "Simple app for news",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js",
+    "start":"electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JureKotnik/News-app.git"
+  },
+  "author": "Jure Kotnik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JureKotnik/News-app/issues"
+  },
+  "homepage": "https://github.com/JureKotnik/News-app#readme",
+   "dependencies": {
+    "electron": "^7.1.9",
+    "i": "^0.3.6"
+  }
+}
