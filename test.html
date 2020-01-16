@@ -18,17 +18,62 @@
             </button>
             <br style="clear: both;">
             <hr>
+            <div v-for="item in seznam">
+                <div class="ui card">
+                    <div class="image">
+                        <img src="">
+                    </div>
+                    <div class="content">
+                        <a class="header">{{item ["title"]}}</a>
+                        <div class="meta">
+                            <span class="date"> {{item["author"]}} </span>
+                        </div>
+                        <div class="description">
+                            {{item["publishedAt"]}}
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <a>
+                            <i class="user icon"></i>
+                            22 Friends
+                        </a>
+                    </div>
+                </div>
+
+            </div>
 
     </div>
     
     <script>
+        const moment = require('moment');
         const {ipcRenderer} = require('electron');
+     
      document.addEventListener("DOMContentLoaded", function () {
             new Vue({
                 el: "#root",
                 data: () => ({
-                    
+                    seznam: []
                 }),
+                created:function()
+                {
+                    var url = 'https://newsapi.org/v2/top-headlines?' +
+                        'country=us&' +
+                        'apiKey=bf83d48cd93947dbbe7ed05f591792a9';
+                    var req = new Request(url);
+                    fetch(req)
+                        .then(res => res.json())
+                        .then(result => {
+
+                          this.seznam = result.articles;
+                          console.log(result);
+                          
+                        })
+                },
+                filters: {
+                    formatDate: function (value) {
+                        
+                    }
+                },
                 methods: {
                     close()
                     {
