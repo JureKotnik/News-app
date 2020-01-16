@@ -11,14 +11,14 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="root" style="padding: 5px;" >
-    
+    <div id="root" style="padding: 3%;" >
+    <h1 style="float: left;" >Best News</h1>
             <button style="float:right" class="circular ui icon button red" v-on:click="close()">
                 <i class="close icon"></i>
             </button>
             <br style="clear: both;">
             <hr>
-            <div v-for="item in seznam" style="float: left; width: 45%; margin: 10px; " >
+            <div v-for="item in seznam" style="float: left; width: 32%; margin: 10px; " >
                 <div class="ui card" style="width: 100%;" >
                     <div class="image">
                         <img style="height: 30vh;" v-bind:src="item['urlToImage'] != null ? item['urlToImage'] :'notfound.png'"  >
@@ -27,7 +27,7 @@
                         
                         <a class="header">{{item ["title"]}}</a>
                         <div class="meta">
-                            <span class="date"> {{item["author"]}} </span>
+                            <span class="date"> {{item["author"]!=null? item["author"]:'Unknown'}} </span>
                         </div>
                         <div class="description">
                             {{item["publishedAt"] | formatDate }}
