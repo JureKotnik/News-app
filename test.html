@@ -11,8 +11,30 @@
     <title>Document</title>
 </head>
 <body>
-    <button>close</button>
-    <script></script>
+    <div id="root">
+
+            <button v-on:click="close()" >close</button>
+
+    </div>
+    
+    <script>
+        const {ipcRenderer} = require('electron');
+     document.addEventListener("DOMContentLoaded", function () {
+            new Vue({
+                el: "#root",
+                data: () => ({
+                    
+                }),
+                methods: {
+                    close()
+                    {
+                        ipcRenderer.send('request-app-close');
+                    }
+                }
+            });
+        });
+
+    </script>
     
 </body>
 </html>
