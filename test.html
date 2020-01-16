@@ -18,26 +18,22 @@
             </button>
             <br style="clear: both;">
             <hr>
-            <div v-for="item in seznam">
-                <div class="ui card">
+            <div v-for="item in seznam" style="float: left; width: 45%; margin: 10px; " >
+                <div class="ui card" style="width: 100%;" >
                     <div class="image">
-                        <img src="">
+                        <img style="height: 30vh;" v-bind:src="item['urlToImage'] != null ? item['urlToImage'] :'notfound.png'"  >
                     </div>
-                    <div class="content">
+                    <div class="content" style="white-space: nowrap; overflow: hidden;" >
+                        
                         <a class="header">{{item ["title"]}}</a>
                         <div class="meta">
                             <span class="date"> {{item["author"]}} </span>
                         </div>
                         <div class="description">
-                            {{item["publishedAt"]}}
+                            {{item["publishedAt"] | formatDate }}
                         </div>
                     </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i>
-                            22 Friends
-                        </a>
-                    </div>
+                 
                 </div>
 
             </div>
@@ -71,7 +67,7 @@
                 },
                 filters: {
                     formatDate: function (value) {
-                        
+                        return moment(value).format('DD MMMM YYYY');
                     }
                 },
                 methods: {
